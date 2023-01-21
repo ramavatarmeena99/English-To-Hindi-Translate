@@ -25,5 +25,7 @@ export default function Home() {
 const UiDesign = styled.div`
   width: 100%;
   height: 100vh;
-
-  background-image: linear-gradient(to right top, #3f7edc, #5d74bd, #676b9f, #686482, #615e68)`;
+background-color:#5B8FB9 ;
+/* background-image: linear-gradient(to right top, #242427, #1c2327, #132223, #11211a, #191d0c); */
+  /* background-image: linear-gradient(to right top, #3f7edc, #5d74bd, #676b9f, #686482, #615e68) */
+  `;

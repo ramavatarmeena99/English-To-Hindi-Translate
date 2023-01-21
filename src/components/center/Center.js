@@ -12,11 +12,7 @@ export default function Center() {
   const url = (e) => {
     setVideoUrl(e.target.value);
   };
-  const enter = (event) => {
-    if (event.keyCode === 13) {
-      // setDownloadLink(res.data.data.translations[0].translatedText);
-    }
-  };
+
   const searchVideos = async () => {
     if (videoUrl === "") {
       setShowAlertMessege(true);
@@ -63,7 +59,6 @@ export default function Center() {
           {/* <H1>Youtube2MP3 Online Video Downloader</H1> */}
 
           <Input
-            onKeyPress={enter}
             onChange={url}
             value={videoUrl}
             type="text"
