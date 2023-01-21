@@ -13,10 +13,9 @@ export default function Center() {
     setVideoUrl(e.target.value);
   };
   const enter = (event) => {
-    if(event.keyCode === 13){
-    // setDownloadLink(res.data.data.translations[0].translatedText);
-     
-  }
+    if (event.keyCode === 13) {
+      // setDownloadLink(res.data.data.translations[0].translatedText);
+    }
   };
   const searchVideos = async () => {
     if (videoUrl === "") {
@@ -64,7 +63,7 @@ export default function Center() {
           {/* <H1>Youtube2MP3 Online Video Downloader</H1> */}
 
           <Input
-          onKeyPress={enter}
+            onKeyPress={enter}
             onChange={url}
             value={videoUrl}
             type="text"
@@ -168,29 +167,22 @@ const TranslateHindi = styled.textarea`
 const SearchButton = styled.button`
   width: 30%;
   height: auto;
-  padding:15px ;
+  padding: 15px;
   display: flex;
   cursor: pointer;
   align-items: center;
   justify-content: center;
   background-color: green;
-  position:relative ;
-  bottom:45px ;
-  right:-70px ;
+  position: relative;
+  bottom: 45px;
+  right: -70px;
   border: none;
   /* border-radius: 5px; */
-  background-image: linear-gradient(
-    to left top,
-    #327ff2,
-    #4a8cf3,
-    #5f98f3,
-    #72a5f2,
-    #86b1f1
-  );
+  background-image: linear-gradient(to right top, #238393, #358491, #438490, #4e858e, #58858d);
   @media (max-width: 768px) {
     width: auto;
-    bottom:30px ;
-  right:-50px ;
+    bottom: 30px;
+    right: -50px;
     height: 27px;
   }
   /* margin-bottom: 50px; */
@@ -203,10 +195,9 @@ const Left = styled.div`
   align-items: center;
   /* padding: 10px; */
   justify-content: flex-start;
-  align-items:flex-end ;
-  background-color:white ;
+  align-items: flex-end;
+  background-color: white;
   flex-direction: column;
-
 `;
 const Right = styled.div`
   width: 50%;
@@ -218,8 +209,6 @@ const Right = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   border-left: 1px solid black;
-
-
 `;
 
 const AlertMessege = styled.div`
@@ -232,12 +221,10 @@ const AlertMessege = styled.div`
   justify-content: center;
   padding: 5px 10px;
   margin-top: 5px;
-
 `;
 
 const H3 = styled.h3`
   color: red;
   font-weight: 500;
   font-size: 15px;
-
 `;
