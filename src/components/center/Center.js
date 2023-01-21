@@ -12,7 +12,12 @@ export default function Center() {
   const url = (e) => {
     setVideoUrl(e.target.value);
   };
-
+  const enter = (event) => {
+    if(event.keyCode === 13){
+    // setDownloadLink(res.data.data.translations[0].translatedText);
+     
+  }
+  };
   const searchVideos = async () => {
     if (videoUrl === "") {
       setShowAlertMessege(true);
@@ -59,13 +64,14 @@ export default function Center() {
           {/* <H1>Youtube2MP3 Online Video Downloader</H1> */}
 
           <Input
+          onKeyPress={enter}
             onChange={url}
             value={videoUrl}
             type="text"
             placeholder="Type here in English (for e.g I Love You)"
           />
 
-          <SearchButton onClick={searchVideos}>dsfbdgnfh</SearchButton>
+          <SearchButton onClick={searchVideos}>TRANSLATE</SearchButton>
           {/* </ForSearchBox>s */}
           {showAlertMessege ? (
             <AlertMessege>
@@ -114,7 +120,7 @@ const Input = styled.textarea`
   max-width: 100%;
 
   min-height: 100%;
-  max-height: 100%;
+  max-height: 90%;
   padding: 10px;
 
   display: flex;
@@ -160,15 +166,19 @@ const TranslateHindi = styled.textarea`
   }
 `;
 const SearchButton = styled.button`
-  width: 8%;
-  height: 35px;
+  width: 30%;
+  height: auto;
+  padding:15px ;
   display: flex;
   cursor: pointer;
   align-items: center;
   justify-content: center;
   background-color: green;
+  position:relative ;
+  bottom:45px ;
+  right:-70px ;
   border: none;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   background-image: linear-gradient(
     to left top,
     #327ff2,
@@ -178,7 +188,9 @@ const SearchButton = styled.button`
     #86b1f1
   );
   @media (max-width: 768px) {
-    width: 13%;
+    width: auto;
+    bottom:30px ;
+  right:-50px ;
     height: 27px;
   }
   /* margin-bottom: 50px; */
@@ -191,10 +203,10 @@ const Left = styled.div`
   align-items: center;
   /* padding: 10px; */
   justify-content: flex-start;
+  align-items:flex-end ;
+  background-color:white ;
   flex-direction: column;
-  @media (max-width: 768px) {
-    justify-content: flex-start;
-  }
+
 `;
 const Right = styled.div`
   width: 50%;
@@ -207,9 +219,7 @@ const Right = styled.div`
   flex-direction: column;
   border-left: 1px solid black;
 
-  @media (max-width: 768px) {
-    justify-content: flex-start;
-  }
+
 `;
 
 const AlertMessege = styled.div`
@@ -222,15 +232,12 @@ const AlertMessege = styled.div`
   justify-content: center;
   padding: 5px 10px;
   margin-top: 5px;
-  @media (max-width: 768px) {
-  }
+
 `;
 
 const H3 = styled.h3`
   color: red;
   font-weight: 500;
   font-size: 15px;
-  @media (max-width: 768px) {
-    font-size: 12px;
-  }
+
 `;

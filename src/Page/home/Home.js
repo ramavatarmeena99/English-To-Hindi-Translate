@@ -26,6 +26,4 @@ const UiDesign = styled.div`
   width: 100%;
   height: 100vh;
 
-  background-image: linear-gradient(to right bottom,#2563eb,rgba(59,130,246,.5));
-
-`;
+  background-image: linear-gradient(to right top, #3f7edc, #5d74bd, #676b9f, #686482, #615e68)`;
