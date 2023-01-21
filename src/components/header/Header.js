@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export default function Header() {
   return (
     <ForHeader>
-    <H2>YouTube2MP3</H2>
+    <H2>English2Hindi</H2>
     </ForHeader>
   )
 }

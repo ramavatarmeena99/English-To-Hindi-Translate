@@ -1,14 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
 import styled from "styled-components";
-import { BiSearch } from "react-icons/bi";
+// import { BiSearch } from "react-icons/bi";
 
 export default function Center() {
   const [videoUrl, setVideoUrl] = useState("");
   const [downloadLink, setDownloadLink] = useState("");
 
   const [showAlertMessege, setShowAlertMessege] = useState(null);
-
 
   const url = (e) => {
     setVideoUrl(e.target.value);
@@ -17,43 +16,38 @@ export default function Center() {
   const searchVideos = async () => {
     if (videoUrl === "") {
       setShowAlertMessege(true);
-      setTimeout(() => {  
+      setTimeout(() => {
         setShowAlertMessege(false);
       }, 2000);
       return () => {
         clearTimeout(showAlertMessege);
       };
     }
-   
 
     const encodedParams = new URLSearchParams();
     encodedParams.append("q", videoUrl);
     encodedParams.append("target", "hi");
     encodedParams.append("source", "en");
     await axios({
-      method: 'POST',
-      url: 'https://google-translate1.p.rapidapi.com/language/translate/v2',
+      method: "POST",
+      url: "https://google-translate1.p.rapidapi.com/language/translate/v2",
 
       headers: {
         Accept: "application/json",
-        'content-type': 'application/x-www-form-urlencoded',
-    'Accept-Encoding': 'application/gzip',
+        "content-type": "application/x-www-form-urlencoded",
+        "Accept-Encoding": "application/gzip",
         "X-RapidAPI-Key": "73d75b16a0mshdc906e0ee650c31p1357e4jsn71a1c52758b2",
         // "X-RapidAPI-Key": "b3a78c0f08mshc9fad7e39ad0a01p18182ejsn65e17fd3055f",
 
-        'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com'
-
+        "X-RapidAPI-Host": "google-translate1.p.rapidapi.com",
       },
-      data: encodedParams
-
+      data: encodedParams,
     })
       .then((res) => {
         console.log(res.data.data.translations[0].translatedText);
-        setDownloadLink(res.data.data.translations[0].translatedText)
-      
+        setDownloadLink(res.data.data.translations[0].translatedText);
       })
       .catch((err) => {
-    
         console.log("err: ", err);
       });
   };
@@ -61,44 +55,34 @@ export default function Center() {
   return (
     <CenterContainer>
       <Box>
-        <Top>
-          <ForDots />
-          <ForDots />
-          <ForDots />
-        </Top>
-        <Bottom>
-          <H1>Youtube2MP3 Online Video Downloader</H1>
-          <ForSearchBox>
-            <Input
-              onChange={url}
-              value={videoUrl}
-              type="text"
-              placeholder="Enter valid youtube Video url"
-            />
+        <Left>
+          {/* <H1>Youtube2MP3 Online Video Downloader</H1> */}
 
-            <SearchButton  onClick={searchVideos}>
-             
-                <BiSearch
-                  style={{
-                    fontSize: "22px",
-                    fontWeight: "900",
-                    color: "white",
-                  }}
-                />
-             
-            </SearchButton>
-          </ForSearchBox>
+          <Input
+            onChange={url}
+            value={videoUrl}
+            type="text"
+            placeholder="Type here in English (for e.g I Love You)"
+          />
+
+          <SearchButton onClick={searchVideos}>dsfbdgnfh</SearchButton>
+          {/* </ForSearchBox>s */}
           {showAlertMessege ? (
             <AlertMessege>
               <H3>*Please Enter Valid URL*</H3>
             </AlertMessege>
           ) : null}
-        
-        <p>{downloadLink}</p>
-        
-        </Bottom>
+        </Left>
+        <Right>
+          <TranslateHindi
+            // onChange={url}
+            value={downloadLink}
+            type="text"
+            placeholder="Get Hindi Translate (for e.g मुझे तुमसे प्यार है)"
+          />
+          {/* <p>{downloadLink}</p> */}
+        </Right>
       </Box>
-
     </CenterContainer>
   );
 }
@@ -115,40 +99,59 @@ const CenterContainer = styled.div`
 const Box = styled.div`
   width: 70vw;
   height: 80%;
-  border: 1px solid white;
-  border-radius: 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+
   @media (max-width: 768px) {
     width: 85vw;
     height: 75%;
   }
 `;
-const ForSearchBox = styled.div`
-  width: 90%;
-  height: 55px;
+
+const Input = styled.textarea`
+  min-width: 100%;
+  max-width: 100%;
+
+  min-height: 100%;
+  max-height: 100%;
+  padding: 10px;
+
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  /* border-radius: 9px; */
   border: none;
-  background-color: white;
-  padding-left: 10px;
   outline: none;
   font-size: 16px;
+  background-color: white;
+
+  /* background-color: transparent; */
   @media (max-width: 768px) {
+    border-radius: 5px;
+    width: 84%;
+
     height: 40px;
   }
 `;
-const Input = styled.input`
-  width: 90%;
-  height: 50px;
+const TranslateHindi = styled.textarea`
+  min-width: 100%;
+  max-width: 100%;
+  background-color: white;
+  padding: 10px;
+  min-height: 100%;
+  max-height: 100%;
+
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  /* border-radius: 9px; */
   border: none;
   outline: none;
   font-size: 16px;
-  background-color: transparent;
+  /* background-color: transparent; */
   @media (max-width: 768px) {
     border-radius: 5px;
     width: 84%;
@@ -181,44 +184,31 @@ const SearchButton = styled.button`
   /* margin-bottom: 50px; */
 `;
 
-const Top = styled.div`
-  width: 100%;
-  height: 10%;
-  border-bottom: 1px solid white;
+const Left = styled.div`
+  width: 50%;
+  height: 100%;
   display: flex;
   align-items: center;
-  flex-direction: row;
-`;
-const Bottom = styled.div`
-  width: 100%;
-  height: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* padding: 10px; */
+  justify-content: flex-start;
   flex-direction: column;
   @media (max-width: 768px) {
     justify-content: flex-start;
   }
 `;
+const Right = styled.div`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  /* padding: 10px; */
 
-const ForDots = styled.div`
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #69a0eb;
-  margin-left: 12px;
-`;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  border-left: 1px solid black;
 
-const H1 = styled.h1`
-  font-size: 36px;
-  text-align: center;
-  font-weight: 700;
-  padding: 10px 110px;
-  color: white;
   @media (max-width: 768px) {
-    font-size: 30px;
-
-    padding: 20px 40px;
+    justify-content: flex-start;
   }
 `;
 
